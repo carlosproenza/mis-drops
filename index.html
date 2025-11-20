@@ -31,7 +31,12 @@
     <section class="feed" aria-label="Lista de drops">
       <a class="feed-item" href="drops/drop01/">
         <div class="feed-media" aria-hidden="true">
-          <img src="drops/drop01/assets/cover01.svg" alt="ARQUETIPO cover">
+          <picture>
+            <source srcset="drops/drop01/assets/cover%2001.webp" type="image/webp">
+            <source srcset="drops/drop01/assets/cover%2001.jpg" type="image/jpeg">
+            <!-- Fallback al SVG existente -->
+            <img src="drops/drop01/assets/cover01.svg" alt="ARQUETIPO cover" width="180" height="180" loading="lazy" decoding="async">
+          </picture>
         </div>
         <div class="feed-text">
           <div class="feed-eyebrow">DROP 01 <span class="dot">•</span> SINGLE</div>
@@ -42,7 +47,11 @@
 
       <a class="feed-item" href="drops/drop02/">
         <div class="feed-media" aria-hidden="true">
-          <img src="drops/drop02/assets/cover02.svg" alt="RUINA DIGITAL cover">
+          <picture>
+            <source srcset="drops/drop02/assets/cover%2002.webp" type="image/webp">
+            <source srcset="drops/drop02/assets/cover%2002.jpg" type="image/jpeg">
+            <img src="drops/drop02/assets/cover02.svg" alt="RUINA DIGITAL cover" width="180" height="180" loading="lazy" decoding="async">
+          </picture>
         </div>
         <div class="feed-text">
           <div class="feed-eyebrow">DROP 02 <span class="dot">•</span> EP</div>
