@@ -8,7 +8,7 @@
   <meta name="description" content="Últimos lanzamientos de DROPS. Proyectos colaborativos — cada lanzamiento con su propia estética.">
   <link rel="canonical" href="https://carlosproenza.github.io/mis-drops/">
 
-  <!-- Favicon (nombre real en repo) -->
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/mis-drops/favicon_Version6.svg">
   <meta name="theme-color" content="#ffffff">
 
@@ -19,6 +19,8 @@
   <meta property="og:url" content="https://carlosproenza.github.io/mis-drops/">
   <meta property="og:site_name" content="DROPS">
   <meta property="og:image" content="https://carlosproenza.github.io/mis-drops/drops/drop01/Cover%2001.jpeg">
+  <!-- Alternativa si quieres que represente el último (DROP 02):
+  <meta property="og:image" content="https://carlosproenza.github.io/mis-drops/drops/drop02/Cover%2002.jpeg"> -->
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="1200">
@@ -29,6 +31,8 @@
   <meta name="twitter:title" content="MONKEY X RED DE APOYO — Últimos lanzamientos">
   <meta name="twitter:description" content="Últimos lanzamientos de DROPS. Proyectos colaborativos — cada lanzamiento con su propia estética.">
   <meta name="twitter:image" content="https://carlosproenza.github.io/mis-drops/drops/drop01/Cover%2001.jpeg">
+  <!-- Alternativa para Twitter:
+  <meta name="twitter:image" content="https://carlosproenza.github.io/mis-drops/drops/drop02/Cover%2002.jpeg"> -->
 
   <!-- Fuente -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,19 +55,10 @@
       </nav>
     </header>
 
+    <!-- Feed de drops (orden: el más nuevo primero) -->
     <section class="feed" aria-label="Lista de drops">
-      <a class="feed-item" href="drops/drop01/">
-        <div class="feed-media" aria-hidden="true">
-          <img src="drops/drop01/Cover%2001.jpeg" alt="MONKEY FLIP cover" width="180" height="180" loading="lazy" decoding="async">
-        </div>
-        <div class="feed-text">
-          <div class="feed-eyebrow">DROP 01 <span class="dot">•</span> ALBUM</div>
-          <h2 class="feed-title">MONKEY FLIP</h2>
-          <div class="feed-meta">2025</div>
-        </div>
-      </a>
-
-      <a class="feed-item" href="drops/drop02/">
+      <!-- DROP 02 (arriba) -->
+      <a class="feed-item" href="drops/drop02/" data-drop="02">
         <div class="feed-media" aria-hidden="true">
           <img src="drops/drop02/Cover%2002.jpeg" alt="Knciones para cogeR en tu cuarto, Pt.2 cover" width="180" height="180" loading="lazy" decoding="async">
         </div>
@@ -73,11 +68,36 @@
           <div class="feed-meta">2025</div>
         </div>
       </a>
+
+      <!-- DROP 01 (abajo) -->
+      <a class="feed-item" href="drops/drop01/" data-drop="01">
+        <div class="feed-media" aria-hidden="true">
+          <img src="drops/drop01/Cover%2001.jpeg" alt="MONKEY FLIP cover" width="180" height="180" loading="lazy" decoding="async">
+        </div>
+        <div class="feed-text">
+          <div class="feed-eyebrow">DROP 01 <span class="dot">•</span> ALBUM</div>
+          <h2 class="feed-title">MONKEY FLIP</h2>
+          <div class="feed-meta">2025</div>
+        </div>
+      </a>
     </section>
 
     <footer>
       <p>&copy; MONKEY CREW X RED DE APOYO 2025</p>
     </footer>
   </main>
+
+  <!-- Script opcional para ordenar automáticamente por data-drop descendente -->
+  <!-- Descomenta si en el futuro agregas muchos drops y no quieres reordenar a mano.
+  <script>
+    (function(){
+      const feed = document.querySelector('.feed');
+      if(!feed) return;
+      const items = Array.from(feed.querySelectorAll('.feed-item'));
+      items.sort((a,b)=>parseInt(b.dataset.drop,10)-parseInt(a.dataset.drop,10));
+      items.forEach(item=>feed.appendChild(item));
+    })();
+  </script>
+  -->
 </body>
 </html>
