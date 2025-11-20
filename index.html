@@ -4,19 +4,45 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>DROPS — Proyectos colaborativos</title>
+
+  <!-- Fonts + color-scheme -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta name="color-scheme" content="light">
+
+  <!-- Estilos globales -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main class="container">
-    <header class="brand">
-      <h1>DROPS</h1>
-      <p>Proyectos colaborativos — cada lanzamiento tiene su propia estética.</p>
+    <header class="header-row">
+      <div class="brand">
+        <h1>DROPS</h1>
+        <p>Proyectos colaborativos — cada lanzamiento tiene su propia estética.</p>
+      </div>
+      <nav class="header-actions" aria-label="Acciones">
+        <a href="#">Contacto</a>
+        <a href="#">Archivo</a>
+      </nav>
     </header>
 
     <section id="lista-drops">
       <ul>
-        <li><a href="drops/drop01/"><strong>01 — ARQUETIPO</strong><br><small>Single • 2025</small></a></li>
-        <li><a href="drops/drop02/"><strong>02 — RUINA DIGITAL</strong><br><small>EP • 2025</small></a></li>
+        <li>
+          <a href="drops/drop01/">
+            <span class="drop-badge">Single</span>
+            <span class="drop-title">01 — ARQUETIPO</span>
+            <div class="drop-meta">Single • 2025</div>
+          </a>
+        </li>
+        <li>
+          <a href="drops/drop02/">
+            <span class="drop-badge">EP</span>
+            <span class="drop-title">02 — RUINA DIGITAL</span>
+            <div class="drop-meta">EP • 2025</div>
+          </a>
+        </li>
       </ul>
     </section>
 
@@ -24,6 +50,10 @@
       <h2>Cómo funciona</h2>
       <p>Sube cada carpeta de drop dentro de <code>/drops/</code>. Cada drop puede tener su propio <code>style.css</code> y carpeta <code>assets/</code>.</p>
     </section>
+
+    <footer>
+      <p>&copy; DROPS</p>
+    </footer>
   </main>
 </body>
 </html>
