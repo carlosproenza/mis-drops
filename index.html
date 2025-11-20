@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>DROPS — Proyectos colaborativos</title>
 
-  <!-- Fonts + color-scheme -->
+  <!-- Sans-only (Inter) y esquema claro -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <meta name="color-scheme" content="light">
 
-  <!-- Estilos globales -->
+  <!-- Estilos globales (feed MSCHF-like) -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,33 +22,34 @@
         <p>Proyectos colaborativos — cada lanzamiento tiene su propia estética.</p>
       </div>
       <nav class="header-actions" aria-label="Acciones">
-        <a href="#">Contacto</a>
         <a href="#">Archivo</a>
+        <a href="#">Contacto</a>
       </nav>
     </header>
 
-    <section id="lista-drops">
-      <ul>
-        <li>
-          <a href="drops/drop01/">
-            <span class="drop-badge">Single</span>
-            <span class="drop-title">01 — ARQUETIPO</span>
-            <div class="drop-meta">Single • 2025</div>
-          </a>
-        </li>
-        <li>
-          <a href="drops/drop02/">
-            <span class="drop-badge">EP</span>
-            <span class="drop-title">02 — RUINA DIGITAL</span>
-            <div class="drop-meta">EP • 2025</div>
-          </a>
-        </li>
-      </ul>
-    </section>
+    <!-- Feed de drops (apilado, sin tarjetas) -->
+    <section class="feed" aria-label="Lista de drops">
+      <a class="feed-item" href="drops/drop01/">
+        <div class="feed-media" aria-hidden="true">
+          <img src="drops/drop01/assets/cover01.svg" alt="ARQUETIPO cover">
+        </div>
+        <div class="feed-text">
+          <div class="feed-eyebrow">DROP 01 <span class="dot">•</span> SINGLE</div>
+          <h2 class="feed-title">ARQUETIPO</h2>
+          <div class="feed-meta">2025</div>
+        </div>
+      </a>
 
-    <section id="como-funciona">
-      <h2>Cómo funciona</h2>
-      <p>Sube cada carpeta de drop dentro de <code>/drops/</code>. Cada drop puede tener su propio <code>style.css</code> y carpeta <code>assets/</code>.</p>
+      <a class="feed-item" href="drops/drop02/">
+        <div class="feed-media" aria-hidden="true">
+          <img src="drops/drop02/assets/cover02.svg" alt="RUINA DIGITAL cover">
+        </div>
+        <div class="feed-text">
+          <div class="feed-eyebrow">DROP 02 <span class="dot">•</span> EP</div>
+          <h2 class="feed-title">RUINA DIGITAL</h2>
+          <div class="feed-meta">2025</div>
+        </div>
+      </a>
     </section>
 
     <footer>
