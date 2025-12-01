@@ -1,0 +1,30 @@
+.release-hero {
+  width: 100%;
+  min-height: 420px;
+  background-image: url('/assets/release-drop-03/hero.svg'); /* reemplaza cuando subas la portada */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+.release-content {
+  text-align: center;
+  background: rgba(0,0,0,0.35);
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  max-width: 880px;
+}
+.release-content h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+}
+.release-content p { margin: 0.25rem 0; }
+@media (min-width: 1024px) {
+  .release-hero { min-height: 560px; }
+  .release-content h1 { font-size: 2.6rem; }
+}
