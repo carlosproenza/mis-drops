@@ -44,11 +44,12 @@
   border-top:1px solid var(--line,#eaeaea);
   background:transparent;
 }
+/* center the info column vertically so audio stays level with the image */
 .cover-inner{
   display:grid;
   grid-template-columns:360px 1fr;
   gap:28px;
-  align-items:start;
+  align-items:center; /* <-- key change: center vertically */
 }
 .cover-img img{
   width:100%;
@@ -59,7 +60,12 @@
   background:#fafafa;
   border:1px solid var(--line,#eaeaea);
 }
-.cover-info{display:flex;flex-direction:column;gap:12px}
+.cover-info{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  justify-content:center; /* center contents vertically within the column */
+}
 .cover-title{margin:0;font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem)}
 .cover-meta{color:var(--muted);font-weight:600}
 .cover-desc{color:var(--muted);margin-top:6px}
@@ -77,13 +83,13 @@
 
 /* === AUDIO PREVIEW styling (hueco blanco) === */
 .audio-preview{
-  margin-top:14px;
+  margin-top:8px;
   background:#ffffff;
   padding:12px;
   border-radius:8px;
   box-shadow:0 6px 20px rgba(23,23,23,0.06);
   border:1px solid var(--line,#eaeaea);
-  max-width:520px;
+  max-width:520px; /* keep it compact so it stays level with the image */
   display:flex;
   gap:12px;
   align-items:center;
