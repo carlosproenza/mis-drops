@@ -1,4 +1,70 @@
-/* Minimal hero styles for drop03 (kept simple and compatible with global style.css) */
-.drop-hero{display:block}
-.hero-cover{display:block}
-.hero-cover img{display:block;max-width:100%;height:auto;border-radius:6px}
+/* release-hero.css
+   Responsive background for drop03 hero using:
+   - YOKONO PORTADA MOVIL.png  -> used for small screens
+   - YOKONO PORTADA WEB.png    -> used for larger screens
+   Images are referenced with spaces encoded in URLs where needed in HTML (here CSS quotes handle spaces).
+*/
+
+.drop-hero{
+  position:relative;
+  min-height:380px; /* adjust to fit desired hero height */
+  display:flex;
+  align-items:center;
+  border-top:1px solid var(--line,#eaeaea);
+  border-bottom:1px solid var(--line,#eaeaea);
+  margin:0 0 34px;
+  padding:28px 20px;
+  color: #fff;
+  background-color:#111; /* fallback color while image loads */
+  background-image: url("YOKONO PORTADA MOVIL.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow:hidden;
+}
+
+/* Desktop: prefer the web hero */
+@media (min-width: 900px){
+  .drop-hero{
+    min-height:420px;
+    background-image: url("YOKONO PORTADA WEB.png");
+  }
+}
+
+/* Overlay to improve text contrast */
+.drop-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.55) 60%);
+  pointer-events:none;
+}
+
+/* inner container to keep content readable and centered */
+.drop-hero-inner{
+  position:relative; /* above overlay */
+  z-index:2;
+  max-width:980px;
+  margin:0 auto;
+  padding:12px;
+}
+
+/* ensure text sits above overlay and images have adequate spacing */
+.feed-eyebrow{
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.95);
+  margin-bottom:8px;
+}
+
+/* adjust meta color */
+.feed-meta{color:rgba(255,255,255,0.9);margin-top:10px}
+
+/* Responsive tweaks for small screens */
+@media (max-width:520px){
+  .drop-hero{padding:20px 14px; min-height:300px}
+  .drop-hero-inner{padding:8px}
+  .feed-eyebrow{font-size:.68rem}
+}
