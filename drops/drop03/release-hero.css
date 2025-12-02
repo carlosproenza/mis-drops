@@ -26,7 +26,7 @@
   }
 }
 
-/* subtle overlay so background isn't too bright for adjacent elements (but hero has no text) */
+/* subtle overlay so background isn't noticably different from adjacent sections */
 .drop-hero::after{
   content:"";
   position:absolute;
@@ -37,6 +37,7 @@
 }
 
 /* === cover-section (below hero) === */
+/* center the info column vertically so audio stays level with the image */
 .cover-section{
   margin:28px auto 40px;
   max-width:980px;
@@ -44,12 +45,11 @@
   border-top:1px solid var(--line,#eaeaea);
   background:transparent;
 }
-/* center the info column vertically so audio stays level with the image */
 .cover-inner{
   display:grid;
   grid-template-columns:360px 1fr;
   gap:28px;
-  align-items:center; /* <-- key change: center vertically */
+  align-items:center; /* vertical centering to keep audio level with image */
 }
 .cover-img img{
   width:100%;
@@ -64,7 +64,7 @@
   display:flex;
   flex-direction:column;
   gap:12px;
-  justify-content:center; /* center contents vertically within the column */
+  justify-content:center;
 }
 .cover-title{margin:0;font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem)}
 .cover-meta{color:var(--muted);font-weight:600}
