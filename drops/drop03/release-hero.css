@@ -2,7 +2,7 @@
    Responsive background for drop03 hero using:
    - YOKONO PORTADA MOVIL.png  -> used for small screens
    - YOKONO PORTADA WEB.png    -> used for larger screens
-   Images are referenced with spaces encoded in URLs where needed in HTML (here CSS quotes handle spaces).
+   Also includes layout for hero-content: cover image + details + release info.
 */
 
 .drop-hero{
@@ -49,22 +49,43 @@
   padding:12px;
 }
 
-/* ensure text sits above overlay and images have adequate spacing */
-.feed-eyebrow{
-  font-size:.78rem;
-  font-weight:600;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,0.95);
-  margin-bottom:8px;
+/* hero-content: cover + details */
+.hero-content{
+  display:flex;
+  gap:20px;
+  align-items:center;
+  width:100%;
 }
 
-/* adjust meta color */
-.feed-meta{color:rgba(255,255,255,0.9);margin-top:10px}
-
-/* Responsive tweaks for small screens */
-@media (max-width:520px){
-  .drop-hero{padding:20px 14px; min-height:300px}
-  .drop-hero-inner{padding:8px}
-  .feed-eyebrow{font-size:.68rem}
+/* cover image */
+.hero-cover{flex:0 0 auto}
+.hero-cover img{
+  width:220px;
+  height:220px;
+  object-fit:cover;
+  display:block;
+  background:#fafafa;
+  border-radius:8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.06);
 }
+
+/* details area */
+.hero-details{flex:1;min-width:0}
+.hero-details .feed-eyebrow{color:rgba(255,255,255,0.95);margin-bottom:8px}
+.hero-details .feed-title{color:#fff;margin:0}
+.hero-details .hero-tag{color:rgba(255,255,255,0.92);margin-top:8px}
+
+/* release info below title */
+.release-info{margin-top:12px;display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.92);font-weight:600}
+.release-badge{display:inline-block;background:rgba(255,255,255,0.08);padding:.28rem .6rem;border-radius:999px;font-size:.85rem}
+
+/* Responsive: stack cover and details on small screens */
+@media (max-width:720px){
+  .hero-content{flex-direction:column;align-items:flex-start;gap:12px}
+  .hero-cover img{width:140px;height:140px}
+  .drop-hero{min-height:300px;padding:20px}
+}
+
+/* Ensure text remains above overlay */
+.drop-hero-inner, .hero-content, .hero-cover img, .hero-details{position:relative;z-index:2}
