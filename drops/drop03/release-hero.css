@@ -1,13 +1,11 @@
 /* release-hero.css
-   Responsive background for drop03 hero using:
-   - YOKONO PORTADA MOVIL.png  -> used for small screens
-   - YOKONO PORTADA WEB.png    -> used for larger screens
-   Also includes layout for hero-content: cover image + details + release info.
+   Responsive background and hero layout for drop03.
+   Also includes styles for the new cover-section placed below the content.
 */
 
 .drop-hero{
   position:relative;
-  min-height:380px; /* adjust to fit desired hero height */
+  min-height:380px;
   display:flex;
   align-items:center;
   border-top:1px solid var(--line,#eaeaea);
@@ -15,7 +13,7 @@
   margin:0 0 34px;
   padding:28px 20px;
   color: #fff;
-  background-color:#111; /* fallback color while image loads */
+  background-color:#111;
   background-image: url("YOKONO PORTADA MOVIL.png");
   background-size: cover;
   background-position: center;
@@ -23,7 +21,6 @@
   overflow:hidden;
 }
 
-/* Desktop: prefer the web hero */
 @media (min-width: 900px){
   .drop-hero{
     min-height:420px;
@@ -31,7 +28,6 @@
   }
 }
 
-/* Overlay to improve text contrast */
 .drop-hero::before{
   content:"";
   position:absolute;
@@ -40,9 +36,8 @@
   pointer-events:none;
 }
 
-/* inner container to keep content readable and centered */
 .drop-hero-inner{
-  position:relative; /* above overlay */
+  position:relative;
   z-index:2;
   max-width:980px;
   margin:0 auto;
@@ -57,7 +52,6 @@
   width:100%;
 }
 
-/* cover image */
 .hero-cover{flex:0 0 auto}
 .hero-cover img{
   width:220px;
@@ -70,15 +64,15 @@
   border: 1px solid rgba(255,255,255,0.06);
 }
 
-/* details area */
 .hero-details{flex:1;min-width:0}
 .hero-details .feed-eyebrow{color:rgba(255,255,255,0.95);margin-bottom:8px}
 .hero-details .feed-title{color:#fff;margin:0}
 .hero-details .hero-tag{color:rgba(255,255,255,0.92);margin-top:8px}
-
-/* release info below title */
 .release-info{margin-top:12px;display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.92);font-weight:600}
 .release-badge{display:inline-block;background:rgba(255,255,255,0.08);padding:.28rem .6rem;border-radius:999px;font-size:.85rem}
+
+/* Ensure text remains above overlay */
+.drop-hero-inner, .hero-content, .hero-cover img, .hero-details{position:relative;z-index:2}
 
 /* Responsive: stack cover and details on small screens */
 @media (max-width:720px){
@@ -87,5 +81,49 @@
   .drop-hero{min-height:300px;padding:20px}
 }
 
-/* Ensure text remains above overlay */
-.drop-hero-inner, .hero-content, .hero-cover img, .hero-details{position:relative;z-index:2}
+/* === NEW: cover-section styles (below content) === */
+.cover-section{
+  margin:40px auto 0;
+  max-width:980px;
+  padding:28px 20px;
+  border-top:1px solid var(--line,#eaeaea);
+  background:transparent;
+}
+.cover-inner{
+  display:grid;
+  grid-template-columns:360px 1fr;
+  gap:28px;
+  align-items:start;
+}
+.cover-img img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  background:#fafafa;
+  border:1px solid var(--line,#eaeaea);
+}
+.cover-info{display:flex;flex-direction:column;gap:10px}
+.cover-eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.cover-title{margin:0;font-weight:800;font-size:clamp(1.6rem,3.4vw,2rem)}
+.cover-meta{color:var(--muted);font-weight:600}
+.cover-desc{color:var(--muted);margin-top:6px}
+.cover-download{
+  display:inline-block;
+  margin-top:10px;
+  padding:.5rem .8rem;
+  background:transparent;
+  border:1px solid var(--line);
+  color:var(--text);
+  border-radius:6px;
+  text-decoration:none;
+}
+.cover-download:hover{background:#f7f7f7}
+
+/* Responsive adjustments */
+@media (max-width:920px){
+  .cover-inner{grid-template-columns:1fr;align-items:center}
+  .cover-info{text-align:left}
+  .cover-img{order:0}
+}
