@@ -12,7 +12,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="../../favicon_Version6.svg">
 
-  <!-- Open Graph: apunta a la portada existente con espacios en el nombre -->
+  <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:title" content="YOKONO — DROP 03">
   <meta property="og:description" content="Preview YOKONO — nuevo drop.">
@@ -34,6 +34,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../style.css">
 
+  <!-- Ajustes locales mínimos (mismo patrón que drop01/drop02) -->
   <style>
     .drop-hero{
       border-top:1px solid var(--line,#eaeaea);
@@ -48,6 +49,14 @@
     .hero-tag{margin:10px 0;color:var(--muted,#6b6b6b)}
     .drop-content{display:grid;grid-template-columns:1fr 380px;gap:28px;margin-top:12px}
     @media (max-width:900px){.drop-content{grid-template-columns:1fr}}
+    .section-block{border-top:1px solid var(--line,#eaeaea);padding:20px 0 8px;margin-top:28px}
+    .section-block:first-of-type{border-top:none;padding-top:0;margin-top:0}
+    h2,h3{font-weight:800;letter-spacing:-.005em;margin:22px 0 10px}
+    h2{font-size:clamp(1.3rem,2.6vw,1.8rem)}
+    h3{font-size:1.05rem}
+    .gallery img{width:100%;height:auto;display:block;background:#fafafa}
+    .back{display:inline-block;margin:0 0 12px;font-size:.85rem;text-decoration:none;color:var(--muted,#6b6b6b)}
+    .back:hover{color:var(--text,#111)}
   </style>
 </head>
 <body class="drop drop03">
