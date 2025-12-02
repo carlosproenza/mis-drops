@@ -1,129 +1,97 @@
-/* release-hero.css
-   Responsive background and hero layout for drop03.
-   Also includes styles for the new cover-section placed below the content.
-*/
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>YOKONO — DROP 03 (Preview)</title>
+  <meta name="description" content="Preview YOKONO — nuevo drop.">
+  <link rel="canonical" href="https://carlosproenza.github.io/mis-drops/drops/drop03/">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#ffffff">
 
-.drop-hero{
-  position:relative;
-  min-height:380px;
-  display:flex;
-  align-items:center;
-  border-top:1px solid var(--line,#eaeaea);
-  border-bottom:1px solid var(--line,#eaeaea);
-  margin:0 0 34px;
-  padding:28px 20px;
-  color: #fff;
-  background-color:#111;
-  background-image: url("YOKONO PORTADA MOVIL.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow:hidden;
-}
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../favicon_Version6.svg">
 
-@media (min-width: 900px){
-  .drop-hero{
-    min-height:420px;
-    background-image: url("YOKONO PORTADA WEB.png");
-  }
-}
+  <!-- Open Graph: usa la versión web del fondo -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="YOKONO — DROP 03">
+  <meta property="og:description" content="Preview YOKONO — nuevo drop.">
+  <meta property="og:url" content="https://carlosproenza.github.io/mis-drops/drops/drop03/">
+  <meta property="og:site_name" content="DROPS">
+  <meta property="og:image" content="https://carlosproenza.github.io/mis-drops/drops/drop03/YOKONO%20PORTADA%20WEB.png">
+  <meta property="og:image:alt" content="Portada YOKONO">
+  <meta property="og:image:type" content="image/png">
 
-.drop-hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.55) 60%);
-  pointer-events:none;
-}
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="YOKONO — DROP 03">
+  <meta name="twitter:description" content="Preview YOKONO — nuevo drop.">
+  <meta name="twitter:image" content="https://carlosproenza.github.io/mis-drops/drops/drop03/YOKONO%20PORTADA%20WEB.png">
 
-.drop-hero-inner{
-  position:relative;
-  z-index:2;
-  max-width:980px;
-  margin:0 auto;
-  padding:12px;
-}
+  <!-- Fuente / estilos globales -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css">
 
-/* hero-content: cover + details */
-.hero-content{
-  display:flex;
-  gap:20px;
-  align-items:center;
-  width:100%;
-}
+  <!-- Archivo CSS específico del drop (asegúrate que exista en drops/drop03/release-hero.css) -->
+  <link rel="stylesheet" href="release-hero.css">
 
-.hero-cover{flex:0 0 auto}
-.hero-cover img{
-  width:220px;
-  height:220px;
-  object-fit:cover;
-  display:block;
-  background:#fafafa;
-  border-radius:8px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
-  border: 1px solid rgba(255,255,255,0.06);
-}
+  <style>
+    /* utilidades locales mínimas */
+    .drop-content{display:grid;grid-template-columns:1fr 380px;gap:28px;margin-top:12px}
+    @media (max-width:900px){.drop-content{grid-template-columns:1fr}}
+    .gallery img{width:100%;height:auto;display:block;background:#fafafa}
+  </style>
+</head>
+<body class="drop drop03">
+  <main class="drop-wrap">
+    <a class="back" href="../../">← Volver</a>
 
-.hero-details{flex:1;min-width:0}
-.hero-details .feed-eyebrow{color:rgba(255,255,255,0.95);margin-bottom:8px}
-.hero-details .feed-title{color:#fff;margin:0}
-.hero-details .hero-tag{color:rgba(255,255,255,0.92);margin-top:8px}
-.release-info{margin-top:12px;display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.92);font-weight:600}
-.release-badge{display:inline-block;background:rgba(255,255,255,0.08);padding:.28rem .6rem;border-radius:999px;font-size:.85rem}
+    <!-- HERO: fondo (sin texto encima) -->
+    <header class="drop-hero" role="img" aria-label="Portada de YOKONO"></header>
 
-/* Ensure text remains above overlay */
-.drop-hero-inner, .hero-content, .hero-cover img, .hero-details{position:relative;z-index:2}
+    <section class="drop-content" aria-labelledby="content-heading">
+      <div class="media" id="content-heading" aria-hidden="true">
+        <!-- Embed opcional (Spotify/Video) -->
+      </div>
 
-/* Responsive: stack cover and details on small screens */
-@media (max-width:720px){
-  .hero-content{flex-direction:column;align-items:flex-start;gap:12px}
-  .hero-cover img{width:140px;height:140px}
-  .drop-hero{min-height:300px;padding:20px}
-}
+      <div class="drop-text">
+        <div class="section-block">
+          <h2>Concepto</h2>
+          <p>Breve introducción del drop YOKONO. Sustituye este texto por la descripción real.</p>
+        </div>
 
-/* === NEW: cover-section styles (below content) === */
-.cover-section{
-  margin:40px auto 0;
-  max-width:980px;
-  padding:28px 20px;
-  border-top:1px solid var(--line,#eaeaea);
-  background:transparent;
-}
-.cover-inner{
-  display:grid;
-  grid-template-columns:360px 1fr;
-  gap:28px;
-  align-items:start;
-}
-.cover-img img{
-  width:100%;
-  height:auto;
-  display:block;
-  border-radius:8px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-  background:#fafafa;
-  border:1px solid var(--line,#eaeaea);
-}
-.cover-info{display:flex;flex-direction:column;gap:10px}
-.cover-eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.cover-title{margin:0;font-weight:800;font-size:clamp(1.6rem,3.4vw,2rem)}
-.cover-meta{color:var(--muted);font-weight:600}
-.cover-desc{color:var(--muted);margin-top:6px}
-.cover-download{
-  display:inline-block;
-  margin-top:10px;
-  padding:.5rem .8rem;
-  background:transparent;
-  border:1px solid var(--line);
-  color:var(--text);
-  border-radius:6px;
-  text-decoration:none;
-}
-.cover-download:hover{background:#f7f7f7}
+        <div class="section-block">
+          <h3>Galería</h3>
+          <div class="gallery">
+            <img src="YOKONO%20WERO%20copia.png" alt="Portada YOKONO" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+    </section>
 
-/* Responsive adjustments */
-@media (max-width:920px){
-  .cover-inner{grid-template-columns:1fr;align-items:center}
-  .cover-info{text-align:left}
-  .cover-img{order:0}
-}
+    <!-- SECCIÓN: portada grande debajo del contenido (sin solapar el hero) -->
+    <section class="cover-section" aria-labelledby="cover-heading">
+      <h2 id="cover-heading" class="visually-hidden">Portada y lanzamiento</h2>
+
+      <div class="cover-inner">
+        <div class="cover-img" aria-hidden="true">
+          <img src="YOKONO%20WERO%20copia.png" alt="Portada YOKONO" width="1200" height="1200" loading="lazy" decoding="async">
+        </div>
+
+        <div class="cover-info">
+          <h1 class="cover-title">YOKONO</h1>
+          <div class="cover-meta">Proximamente diciembre 30, 2025</div>
+          <p class="cover-desc">Descarga la portada o úsala como referencia para presskits y merch.</p>
+          <p><a class="cover-download" href="YOKONO%20WERO%20copia.png" download>Descargar portada</a></p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>&copy; MONKEY CREW X RED DE APOYO 2025</p>
+    </footer>
+  </main>
+</body>
+</html>
