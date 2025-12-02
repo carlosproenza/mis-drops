@@ -1,9 +1,10 @@
 # Drop 03 — YOKONO (Preview)
 
-Contenido de la carpeta drops/drop-03:
-- index.html -> Demo estática (abrir en navegador o servir con servidor estático)
-- release-hero.css -> Estilos del hero
-- hero.svg -> Placeholder para la portada
+Contenido de la carpeta drops/drop03:
+- index.html -> Página del drop (alineada con la estructura y estilos de los otros drops)
+- YOKONO WERO copia.png -> Portada del drop (archivo con espacios, usado tal cual en el HTML)
+- hero.svg -> placeholder SVG (opcional)
+- release-hero.css -> estilos mínimos locales para el hero
 
 Cómo probar localmente:
 - Desde la raíz del repo, servir la carpeta drops/drop03 con un servidor estático:
@@ -12,5 +13,5 @@ Cómo probar localmente:
 - Abrir en navegador: http://localhost:5000 (o el puerto que indique el servidor)
 
 Notas:
-- Reemplaza hero.svg por la portada real y actualiza release-hero.css si cambia nombre o formato.
-- Si tu sitio genera rutas desde otra parte, integra el HTML o el componente donde corresponda.
+- La página utiliza ../../style.css para heredar estilos globales y mantiene la misma jerarquía y clases (feed-eyebrow, feed-title, feed-meta, drop-hero, drop-content) para consistencia visual.
+- Si prefieres renombrar la portada para quitar espacios, actualiza las referencias en index.html e index.html (raíz).
