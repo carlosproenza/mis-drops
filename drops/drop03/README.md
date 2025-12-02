@@ -6,9 +6,9 @@ Contenido de la carpeta drops/drop-03:
 - hero.svg -> Placeholder para la portada
 
 Cómo probar localmente:
-- Desde la raíz del repo, servir la carpeta drops/drop-03 con un servidor estático:
-  - npx serve drops/drop-03
-  - o: python3 -m http.server --directory drops/drop-03 8000
+- Desde la raíz del repo, servir la carpeta drops/drop03 con un servidor estático:
+  - npx serve drops/drop03
+  - o: python3 -m http.server --directory drops/drop03 8000
 - Abrir en navegador: http://localhost:5000 (o el puerto que indique el servidor)
 
 Notas:
