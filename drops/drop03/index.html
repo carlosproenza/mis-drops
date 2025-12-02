@@ -52,8 +52,20 @@
     <header class="drop-hero" role="img" aria-label="Portada de YOKONO"></header>
 
     <section class="drop-content" aria-labelledby="content-heading">
-      <div class="media" id="content-heading" aria-hidden="true">
-        <!-- Embed opcional (Spotify/Video) -->
+      <!-- MEDIA: hueco blanco grande (aquí se muestra el reproductor, centrado y nivelado) -->
+      <div class="media" id="content-heading" aria-hidden="false">
+        <div class="media-inner">
+          <!-- Reproductor centrado dentro del hueco -->
+          <div class="audio-preview" aria-label="Audio preview">
+            <audio id="preview-audio" controls preload="none" controlsList="nodownload">
+              <source src="preview%20audio.wav" type="audio/wav">
+              Tu navegador no soporta audio.
+            </audio>
+            <div class="audio-actions">
+              <a class="audio-download" href="preview%20audio.wav" download>Descargar preview</a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="drop-text">
@@ -71,7 +83,7 @@
       </div>
     </section>
 
-    <!-- SECCIÓN: portada grande debajo del contenido (sin solapar el hero) -->
+    <!-- SECCIÓN: portada grande debajo del contenido -->
     <section class="cover-section" aria-labelledby="cover-heading">
       <h2 id="cover-heading" class="visually-hidden">Portada y lanzamiento</h2>
 
@@ -83,19 +95,8 @@
         <div class="cover-info">
           <h1 class="cover-title">YOKONO</h1>
           <div class="cover-meta">Proximamente diciembre 30, 2025</div>
-
-          <!-- audio preview box (hueco blanco), apuntando a "preview audio.wav" -->
-          <div class="audio-preview" aria-label="Audio preview">
-            <audio id="preview-audio" controls preload="none" controlsList="nodownload">
-              <source src="preview%20audio.wav" type="audio/wav">
-              Tu navegador no soporta audio.
-            </audio>
-            <div class="audio-actions">
-              <a class="audio-download" href="preview%20audio.wav" download>Descargar preview</a>
-            </div>
-          </div>
-
           <p class="cover-desc">Descarga la portada o úsala como referencia para presskits y merch.</p>
+          <p><a class="cover-download" href="YOKONO%20WERO%20copia.png" download>Descargar portada</a></p>
         </div>
       </div>
     </section>
@@ -105,7 +106,7 @@
     </footer>
   </main>
 
-  <!-- Pequeño script (placeholder para accesibilidad) -->
+  <!-- Pequeño script (placeholder) -->
   <script>
     (function(){
       const audio = document.getElementById('preview-audio');
