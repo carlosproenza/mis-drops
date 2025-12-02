@@ -34,7 +34,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../style.css">
 
-  <!-- Archivo CSS específico del drop (asegúrate que exista en drops/drop03/release-hero.css) -->
+  <!-- Archivo CSS específico del drop -->
   <link rel="stylesheet" href="release-hero.css">
 
   <style>
@@ -83,8 +83,19 @@
         <div class="cover-info">
           <h1 class="cover-title">YOKONO</h1>
           <div class="cover-meta">Proximamente diciembre 30, 2025</div>
+
+          <!-- audio preview box (hueco blanco) -->
+          <div class="audio-preview" aria-label="Audio preview">
+            <audio id="preview-audio" controls preload="none" controlsList="nodownload">
+              <source src="audio.wav" type="audio/wav">
+              Tu navegador no soporta audio.
+            </audio>
+            <div class="audio-actions">
+              <a class="audio-download" href="audio.wav" download>Descargar preview</a>
+            </div>
+          </div>
+
           <p class="cover-desc">Descarga la portada o úsala como referencia para presskits y merch.</p>
-          <p><a class="cover-download" href="YOKONO%20WERO%20copia.png" download>Descargar portada</a></p>
         </div>
       </div>
     </section>
@@ -93,5 +104,18 @@
       <p>&copy; MONKEY CREW X RED DE APOYO 2025</p>
     </footer>
   </main>
+
+  <!-- Pequeño script para mejorar accesibilidad (muestra duración cuando carga) -->
+  <script>
+    (function(){
+      const audio = document.getElementById('preview-audio');
+      if(!audio) return;
+      audio.addEventListener('loadedmetadata', ()=> {
+        // no visual UI change required now, placeholder for future enhancements
+        // could display duration or custom controls if desired
+        console.log('Preview duration:', audio.duration);
+      });
+    })();
+  </script>
 </body>
 </html>
