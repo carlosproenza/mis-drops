@@ -1,6 +1,6 @@
 /* release-hero.css
-   Hero background (mobile / web) and cover-section styles.
-   The hero is decorative only (no text on top).
+   Hero background (mobile / web) and layout for drop03.
+   The media column contains the centered audio box (hueco blanco).
 */
 
 .drop-hero{
@@ -26,7 +26,7 @@
   }
 }
 
-/* subtle overlay so background isn't noticably different from adjacent sections */
+/* subtle overlay */
 .drop-hero::after{
   content:"";
   position:absolute;
@@ -36,8 +36,56 @@
   z-index:1;
 }
 
+/* === MEDIA column (the white box area) === */
+.media{
+  background:#fff;
+  border:1px solid var(--line,#eaeaea);
+  min-height:300px;          /* height of the white area */
+  display:flex;
+  align-items:center;        /* vertical centering of inner content */
+  justify-content:center;    /* horizontal centering */
+  padding:28px;
+  overflow:hidden;
+}
+
+/* inner wrapper to limit width of the audio box inside the media area */
+.media-inner{width:100%;max-width:720px;display:flex;align-items:center;justify-content:center}
+
+/* === AUDIO PREVIEW styling (the white card) === */
+.audio-preview{
+  background:#ffffff;
+  padding:14px;
+  border-radius:8px;
+  box-shadow:0 8px 30px rgba(23,23,23,0.06);
+  border:1px solid var(--line,#eaeaea);
+  width:100%;
+  max-width:520px; /* keep compact so it stays level with the image */
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-direction:column;
+}
+.audio-preview audio{
+  width:100%;
+  outline:none;
+}
+.audio-actions{
+  width:100%;
+  display:flex;
+  justify-content:flex-end;
+}
+.audio-download{
+  font-size:.9rem;
+  color:var(--text);
+  text-decoration:none;
+  border:1px solid var(--line);
+  padding:.35rem .6rem;
+  border-radius:6px;
+  background:transparent;
+}
+.audio-download:hover{background:#f7f7f7}
+
 /* === cover-section (below hero) === */
-/* center the info column vertically so audio stays level with the image */
 .cover-section{
   margin:28px auto 40px;
   max-width:980px;
@@ -49,7 +97,7 @@
   display:grid;
   grid-template-columns:360px 1fr;
   gap:28px;
-  align-items:center; /* vertical centering to keep audio level with image */
+  align-items:center;
 }
 .cover-img img{
   width:100%;
@@ -81,40 +129,6 @@
 }
 .cover-download:hover{background:#f7f7f7}
 
-/* === AUDIO PREVIEW styling (hueco blanco) === */
-.audio-preview{
-  margin-top:8px;
-  background:#ffffff;
-  padding:12px;
-  border-radius:8px;
-  box-shadow:0 6px 20px rgba(23,23,23,0.06);
-  border:1px solid var(--line,#eaeaea);
-  max-width:520px; /* keep it compact so it stays level with the image */
-  display:flex;
-  gap:12px;
-  align-items:center;
-  flex-direction:column;
-}
-.audio-preview audio{
-  width:100%;
-  outline:none;
-}
-.audio-actions{
-  width:100%;
-  display:flex;
-  justify-content:flex-end;
-}
-.audio-download{
-  font-size:.9rem;
-  color:var(--text);
-  text-decoration:none;
-  border:1px solid var(--line);
-  padding:.35rem .6rem;
-  border-radius:6px;
-  background:transparent;
-}
-.audio-download:hover{background:#f7f7f7}
-
 /* Responsive adjustments */
 @media (max-width:920px){
   .cover-inner{grid-template-columns:1fr;align-items:center}
@@ -123,4 +137,5 @@
   .cover-title{font-size:1.6rem}
   .drop-hero{min-height:300px}
   .audio-preview{max-width:100%}
+  .media{min-height:220px;padding:18px}
 }
