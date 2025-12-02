@@ -12,13 +12,13 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="../../favicon_Version6.svg">
 
-  <!-- Open Graph -->
+  <!-- Open Graph: usa la versión web del fondo -->
   <meta property="og:type" content="article">
   <meta property="og:title" content="YOKONO — DROP 03">
   <meta property="og:description" content="Preview YOKONO — nuevo drop.">
   <meta property="og:url" content="https://carlosproenza.github.io/mis-drops/drops/drop03/">
   <meta property="og:site_name" content="DROPS">
-  <meta property="og:image" content="https://carlosproenza.github.io/mis-drops/drops/drop03/YOKONO%20WERO%20copia.png">
+  <meta property="og:image" content="https://carlosproenza.github.io/mis-drops/drops/drop03/YOKONO%20PORTADA%20WEB.png">
   <meta property="og:image:alt" content="Portada YOKONO">
   <meta property="og:image:type" content="image/png">
 
@@ -26,54 +26,34 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="YOKONO — DROP 03">
   <meta name="twitter:description" content="Preview YOKONO — nuevo drop.">
-  <meta name="twitter:image" content="https://carlosproenza.github.io/mis-drops/drops/drop03/YOKONO%20WERO%20copia.png">
+  <meta name="twitter:image" content="https://carlosproenza.github.io/mis-drops/drops/drop03/YOKONO%20PORTADA%20WEB.png">
 
   <!-- Fuente / estilos globales -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="release-hero.css">
 
-  <!-- Ajustes locales mínimos (mismo patrón que drop01/drop02) -->
   <style>
-    .drop-hero{
-      border-top:1px solid var(--line,#eaeaea);
-      border-bottom:1px solid var(--line,#eaeaea);
-      padding:26px 0 22px;
-      margin:0 0 34px;
-      position:relative;
-      background:#fff;
-    }
-    .hero-cover img{width:240px;height:240px;object-fit:cover;display:block;background:#fafafa;border-radius:6px}
-    .drop-hero .feed-title{margin:0;font-size:clamp(2.2rem,5.2vw,3.4rem);font-weight:800}
-    .hero-tag{margin:10px 0;color:var(--muted,#6b6b6b)}
+    /* pequeñas ayudas locales, todo lo demás vive en style.css y release-hero.css */
+    .drop-hero .feed-title{margin:0;font-size:clamp(2.2rem,5.2vw,3.4rem);font-weight:800;color:#fff}
+    .hero-tag{margin:10px 0;color:rgba(255,255,255,.9)}
     .drop-content{display:grid;grid-template-columns:1fr 380px;gap:28px;margin-top:12px}
     @media (max-width:900px){.drop-content{grid-template-columns:1fr}}
-    .section-block{border-top:1px solid var(--line,#eaeaea);padding:20px 0 8px;margin-top:28px}
-    .section-block:first-of-type{border-top:none;padding-top:0;margin-top:0}
-    h2,h3{font-weight:800;letter-spacing:-.005em;margin:22px 0 10px}
-    h2{font-size:clamp(1.3rem,2.6vw,1.8rem)}
-    h3{font-size:1.05rem}
-    .gallery img{width:100%;height:auto;display:block;background:#fafafa}
-    .back{display:inline-block;margin:0 0 12px;font-size:.85rem;text-decoration:none;color:var(--muted,#6b6b6b)}
-    .back:hover{color:var(--text,#111)}
   </style>
 </head>
 <body class="drop drop03">
   <main class="drop-wrap">
     <a class="back" href="../../">← Volver</a>
 
+    <!-- Hero: fondo responsive controlado por release-hero.css -->
     <header class="drop-hero">
-      <div style="display:flex;gap:18px;align-items:center">
-        <div class="hero-cover" aria-hidden="true">
-          <img src="YOKONO%20WERO%20copia.png" alt="Portada YOKONO" loading="lazy" decoding="async">
-        </div>
-        <div>
-          <div class="feed-eyebrow">DROP 03 <span class="dot">•</span> PREVIEW</div>
-          <h1 class="feed-title">YOKONO (Preview)</h1>
-          <p class="hero-tag">Avance del nuevo lanzamiento</p>
-          <div class="feed-meta">2025</div>
-        </div>
+      <div class="drop-hero-inner">
+        <div class="feed-eyebrow" aria-hidden="true">DROP 03 <span class="dot">•</span> PREVIEW</div>
+        <h1 class="feed-title">YOKONO (Preview)</h1>
+        <p class="hero-tag">Avance del nuevo lanzamiento</p>
+        <div class="feed-meta">2025</div>
       </div>
     </header>
 
@@ -91,6 +71,7 @@
         <div class="section-block">
           <h3>Galería</h3>
           <div class="gallery">
+            <!-- Mantenemos la portada también como imagen dentro de la galería -->
             <img src="YOKONO%20WERO%20copia.png" alt="Portada YOKONO" loading="lazy" decoding="async">
           </div>
         </div>
