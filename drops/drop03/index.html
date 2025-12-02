@@ -12,7 +12,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="../../favicon_Version6.svg">
 
-  <!-- Open Graph: usa la versión web del fondo -->
+  <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:title" content="YOKONO — DROP 03">
   <meta property="og:description" content="Preview YOKONO — nuevo drop.">
@@ -84,14 +84,14 @@
           <h1 class="cover-title">YOKONO</h1>
           <div class="cover-meta">Proximamente diciembre 30, 2025</div>
 
-          <!-- audio preview box (hueco blanco), nivelado con la foto -->
+          <!-- audio preview box (hueco blanco), apuntando a "preview audio.wav" -->
           <div class="audio-preview" aria-label="Audio preview">
             <audio id="preview-audio" controls preload="none" controlsList="nodownload">
-              <source src="audio.wav" type="audio/wav">
+              <source src="preview%20audio.wav" type="audio/wav">
               Tu navegador no soporta audio.
             </audio>
             <div class="audio-actions">
-              <a class="audio-download" href="audio.wav" download>Descargar preview</a>
+              <a class="audio-download" href="preview%20audio.wav" download>Descargar preview</a>
             </div>
           </div>
 
@@ -105,13 +105,12 @@
     </footer>
   </main>
 
-  <!-- Pequeño script para mejorar accesibilidad (placeholder para posibles mejoras) -->
+  <!-- Pequeño script (placeholder para accesibilidad) -->
   <script>
     (function(){
       const audio = document.getElementById('preview-audio');
       if(!audio) return;
       audio.addEventListener('loadedmetadata', ()=> {
-        // placeholder: en el futuro podríamos mostrar la duración o controls personalizados
         console.log('Preview duration:', audio.duration);
       });
     })();
