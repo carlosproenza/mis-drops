@@ -38,9 +38,12 @@
   <style>
     /* pequeñas ayudas locales, todo lo demás vive en style.css y release-hero.css */
     .drop-hero .feed-title{margin:0;font-size:clamp(2.2rem,5.2vw,3.4rem);font-weight:800;color:#fff}
-    .hero-tag{margin:10px 0;color:rgba(255,255,255,.9)}
+    .hero-tag{margin:10px 0;color:rgba(255,255,255,.92)}
     .drop-content{display:grid;grid-template-columns:1fr 380px;gap:28px;margin-top:12px}
     @media (max-width:900px){.drop-content{grid-template-columns:1fr}}
+    /* Release info small adjustments */
+    .release-info{margin-top:10px;color:rgba(255,255,255,0.95);font-weight:600}
+    .release-badge{display:inline-block;background:rgba(255,255,255,0.08);padding:.25rem .5rem;border-radius:999px;margin-right:.6rem;font-size:.85rem}
   </style>
 </head>
 <body class="drop drop03">
@@ -50,10 +53,26 @@
     <!-- Hero: fondo responsive controlado por release-hero.css -->
     <header class="drop-hero">
       <div class="drop-hero-inner">
-        <div class="feed-eyebrow" aria-hidden="true">DROP 03 <span class="dot">•</span> PREVIEW</div>
-        <h1 class="feed-title">YOKONO (Preview)</h1>
-        <p class="hero-tag">Avance del nuevo lanzamiento</p>
-        <div class="feed-meta">2025</div>
+        <!-- Nuevo bloque: portada + nombre + lanzamiento -->
+        <div class="hero-content">
+          <div class="hero-cover" aria-hidden="true">
+            <img src="YOKONO%20WERO%20copia.png" alt="Portada YOKONO" loading="lazy" decoding="async">
+          </div>
+
+          <div class="hero-details">
+            <div class="feed-eyebrow">DROP 03 <span class="dot">•</span> PREVIEW</div>
+            <h1 class="feed-title">YOKONO (Preview)</h1>
+            <p class="hero-tag">Avance del nuevo lanzamiento</p>
+
+            <!-- Zona de lanzamiento debajo del título/nombre -->
+            <div class="release-info" aria-hidden="false">
+              <span class="release-badge">Lanzamiento</span>
+              <span class="release-meta">2025</span>
+              <!-- Si quieres agregar fecha exacta: <span class="release-date"> • 2025-12-01</span> -->
+            </div>
+          </div>
+        </div>
+        <!-- fin hero-content -->
       </div>
     </header>
 
