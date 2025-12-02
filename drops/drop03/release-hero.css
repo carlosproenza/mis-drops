@@ -75,6 +75,40 @@
 }
 .cover-download:hover{background:#f7f7f7}
 
+/* === AUDIO PREVIEW styling (hueco blanco) === */
+.audio-preview{
+  margin-top:14px;
+  background:#ffffff;
+  padding:12px;
+  border-radius:8px;
+  box-shadow:0 6px 20px rgba(23,23,23,0.06);
+  border:1px solid var(--line,#eaeaea);
+  max-width:520px;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-direction:column;
+}
+.audio-preview audio{
+  width:100%;
+  outline:none;
+}
+.audio-actions{
+  width:100%;
+  display:flex;
+  justify-content:flex-end;
+}
+.audio-download{
+  font-size:.9rem;
+  color:var(--text);
+  text-decoration:none;
+  border:1px solid var(--line);
+  padding:.35rem .6rem;
+  border-radius:6px;
+  background:transparent;
+}
+.audio-download:hover{background:#f7f7f7}
+
 /* Responsive adjustments */
 @media (max-width:920px){
   .cover-inner{grid-template-columns:1fr;align-items:center}
@@ -82,4 +116,5 @@
   .cover-img{order:0}
   .cover-title{font-size:1.6rem}
   .drop-hero{min-height:300px}
+  .audio-preview{max-width:100%}
 }
