@@ -1,6 +1,6 @@
 /* release-hero.css
-   Versión sin solapamiento: la .media queda debajo del hero (margin-top: 0).
-   Esto evita que la caja blanca corte la portada.
+   Hero + media + merch grid styles; gallery renamed to Merch.
+   Each merch item (.gallery-item) supports front/back toggle via JS.
 */
 
 .drop-hero{
@@ -16,30 +16,24 @@
   background-position: center;
   background-repeat: no-repeat;
   overflow:hidden;
-  /* reducción del padding-bottom: no necesitamos espacio para superposición */
-  padding-bottom:40px;
+  padding-bottom:110px;
   z-index:0;
 }
 
 @media (min-width: 900px){
-  .drop-hero{
-    min-height:420px;
-    background-image: url("YOKONO PORTADA WEB.png");
-    padding-bottom:48px;
-  }
+  .drop-hero{ min-height:420px; background-image: url("YOKONO PORTADA WEB.png"); padding-bottom:120px; }
 }
 
 .drop-hero::after{
   content:"";
   position:absolute;
   inset:0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.02) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.04) 100%);
   pointer-events:none;
   z-index:0;
 }
 
-/* === MEDIA column (blanco) === */
-/* SIN SUPERPOSICIÓN: margin-top = 0 para que la caja no suba sobre el hero */
+/* MEDIA (audio area) */
 .media{
   background:#fff;
   border:1px solid var(--line,#eaeaea);
@@ -51,23 +45,14 @@
   overflow:hidden;
   position:relative;
   z-index:2;
-  margin-top:0; /* <-- ya no se superpone el hueco con el hero */
+  margin-top:-60px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-  border-top-left-radius:6px;
-  border-top-right-radius:6px;
+  border-top-left-radius:12px;
+  border-top-right-radius:12px;
 }
+.media-inner{ width:100%; max-width:720px; display:flex; align-items:center; justify-content:center; padding:6px; }
 
-/* inner wrapper to limit width of the audio box inside the media area */
-.media-inner{
-  width:100%;
-  max-width:720px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:6px;
-}
-
-/* === AUDIO CARD === */
+/* AUDIO CARD */
 .audio-card{
   background:#ffffff;
   padding:16px;
@@ -86,17 +71,36 @@
 .audio-download{font-size:.9rem;color:var(--text);text-decoration:none;border:1px solid var(--line);padding:.38rem .6rem;border-radius:6px;background:transparent}
 .audio-download:hover{background:#f7f7f7}
 
-/* === Gallery cover styles (sin cambios) === */
+/* === MERCH GRID === */
 .gallery { margin-top:8px; }
-.gallery-cover{ background:transparent; display:block; max-width:520px; border-radius:8px; overflow:visible; }
-.gallery-cover img{ width:100%; height:auto; display:block; border-radius:8px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); border:1px solid var(--line,#eaeaea); transition: transform .18s ease, box-shadow .18s ease; }
-.gallery-cover img:hover{ transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,0.08); }
-.gallery-actions{ margin-top:8px; display:flex; gap:8px; justify-content:flex-start; }
-.cover-download, .gallery-actions a{ display:inline-block; padding:.4rem .7rem; border-radius:6px; border:1px solid var(--line); background:transparent; color:var(--text); text-decoration:none; }
-.cover-download:hover, .gallery-actions a:hover{ background:#f7f7f7 }
+.gallery-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap:18px;
+  align-items:start;
+}
+.gallery-item{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  max-width:520px;
+}
+.gallery-item img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  border:1px solid var(--line,#eaeaea);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.gallery-item img:hover{ transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,0.08); }
+.gallery-actions{ display:flex; gap:8px; justify-content:flex-start; }
+.gallery-download, .cover-download{ display:inline-block; padding:.4rem .7rem; border-radius:6px; border:1px solid var(--line); background:transparent; color:var(--text); text-decoration:none; }
+.gallery-download:hover, .cover-download:hover{ background:#f7f7f7 }
 
-/* === cover-section (below hero) === */
-.cover-section{ margin:28px auto 40px; max-width:980px; padding:28px 20px; border-top:1px solid var(--line,#eaeaea); background:transparent; }
+/* COVER SECTION (static) */
+.cover-section{ margin:8px auto 40px; max-width:980px; padding:28px 20px; border-top:1px solid var(--line,#eaeaea); background:transparent; }
 .cover-inner{ display:grid; grid-template-columns:360px 1fr; gap:28px; align-items:center; }
 .cover-img img{ width:100%; height:auto; display:block; border-radius:8px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); background:#fafafa; border:1px solid var(--line,#eaeaea); }
 .cover-info{ display:flex; flex-direction:column; gap:12px; justify-content:center; }
@@ -106,11 +110,12 @@
 
 /* Responsive adjustments */
 @media (max-width:920px){
-  .media{ padding:18px;min-height:220px; border-top-left-radius:8px; border-top-right-radius:8px; }
-  .audio-card{max-width:100%}
-  .cover-inner{grid-template-columns:1fr;align-items:center}
+  .media{ margin-top:-40px; padding:18px; min-height:220px; border-top-left-radius:10px; border-top-right-radius:10px; }
+  .audio-card{ max-width:100%; }
+  .gallery-grid{ grid-template-columns: 1fr; }
+  .cover-inner{ grid-template-columns:1fr; align-items:center; }
   .cover-info{text-align:left}
-  .cover-img{order:0}
-  .cover-title{font-size:1.6rem}
-  .drop-hero{min-height:280px;padding-bottom:60px}
+  .cover-img{ order:0 }
+  .cover-title{ font-size:1.6rem }
+  .drop-hero{ min-height:280px; padding-bottom:120px }
 }
