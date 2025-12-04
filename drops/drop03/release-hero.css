@@ -1,6 +1,9 @@
 /* release-hero.css
-   Hero background (mobile / web) and layout for drop03.
-   Media column contains centered audio card (hueco blanco).
+   Ajustado para evitar que la caja blanca (.media) recorte la portada del hero.
+   Cambios clave:
+   - padding-bottom del hero reducido/ajustado para espacio visual
+   - margin-top de .media menos negativo para solapamiento más suave
+   - border-radius y overflow para que el borde superior del hueco quede "recortado" y limpio
 */
 
 .drop-hero{
@@ -16,7 +19,8 @@
   background-position: center;
   background-repeat: no-repeat;
   overflow:hidden;
-  padding-bottom:140px; /* espacio extra para que la caja pueda superponerse sin cortar */
+  /* espacio suficiente para que la media no corte la portada */
+  padding-bottom:110px;
   z-index:0;
 }
 
@@ -25,7 +29,7 @@
   .drop-hero{
     min-height:420px;
     background-image: url("YOKONO PORTADA WEB.png");
-    padding-bottom:160px;
+    padding-bottom:120px;
   }
 }
 
@@ -40,25 +44,33 @@
 }
 
 /* === MEDIA column (blanco) === */
-/* la media area actúa como lienzo blanco; la empujamos hacia arriba con margin-top negativo
-   para que la caja de audio quede dentro del hueco del hero (como en tu captura) */
+/* la media area actúa como lienzo blanco; ahora se superpone menos para no cortar la portada */
 .media{
   background:#fff;
   border:1px solid var(--line,#eaeaea);
-  min-height:300px;          /* height of the white area */
+  min-height:300px;          /* altura del área blanca */
   display:flex;
-  align-items:center;        /* vertical centering of inner content */
-  justify-content:center;    /* horizontal centering */
+  align-items:center;        /* centrado vertical del contenido interno */
+  justify-content:center;    /* centrado horizontal */
   padding:28px;
   overflow:hidden;
   position:relative;
   z-index:2;                 /* por encima del hero */
-  margin-top:-120px;         /* tira la media hacia arriba para que quede en el hueco */
+  margin-top:-60px;          /* reducido: menos solapamiento con el hero */
   box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  border-top-left-radius:12px;  /* redondea borde superior para 'recorte' más limpio */
+  border-top-right-radius:12px;
 }
 
 /* inner wrapper to limit width of the audio box inside the media area */
-.media-inner{width:100%;max-width:720px;display:flex;align-items:center;justify-content:center;padding:6px}
+.media-inner{
+  width:100%;
+  max-width:720px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:6px;
+}
 
 /* === AUDIO CARD (el cuadro blanco con el player) === */
 .audio-card{
@@ -68,7 +80,7 @@
   box-shadow:0 12px 28px rgba(23,23,23,0.06);
   border:1px solid var(--line,#eaeaea);
   width:100%;
-  max-width:640px; /* ajusta para que no sea excesivamente ancho */
+  max-width:640px;
   display:flex;
   flex-direction:column;
   gap:10px;
@@ -97,13 +109,13 @@
 .cover-meta{ color:var(--muted); font-weight:600 }
 .cover-desc{ color:var(--muted); margin-top:6px }
 
-/* Responsive adjustments */
+/* Responsive adjustments: reducimos la superposición en móvil */
 @media (max-width:920px){
-  .media{margin-top:-80px;padding:18px;min-height:220px}
+  .media{ margin-top:-40px; padding:18px; min-height:220px; border-top-left-radius:10px; border-top-right-radius:10px; }
   .audio-card{max-width:100%}
   .cover-inner{grid-template-columns:1fr;align-items:center}
   .cover-info{text-align:left}
   .cover-img{order:0}
   .cover-title{font-size:1.6rem}
-  .drop-hero{min-height:280px;padding-bottom:120px}
+  .drop-hero{min-height:280px;padding-bottom:100px}
 }
