@@ -103,6 +103,19 @@
                 <div id="gallery-desc-2" class="visually-hidden">Pulsa la imagen para ver la espalda</div>
               </div>
 
+              <!-- Merch item 3 (nuevo) -->
+              <div class="gallery-item">
+                <img class="gallery-toggle"
+                     data-front="yoko%20ono%20long%20sleeve%20png.png"
+                     data-back="yoko%20ono%20long%20sleeve%20espalda%20png.png"
+                     src="yoko%20ono%20long%20sleeve%20png.png"
+                     alt="YOKO ONO long sleeve — vista frontal"
+                     width="800" height="800"
+                     loading="lazy" decoding="async"
+                     tabindex="0" role="button" aria-pressed="false" aria-describedby="gallery-desc-3">
+                <div id="gallery-desc-3" class="visually-hidden">Pulsa la imagen para ver la espalda</div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -130,7 +143,7 @@
       </div>
     </section>
 
-    <!-- NUEVA SECCIÓN: Presave CTA (debajo de todo, antes del footer) -->
+    <!-- PRESAVE SECTION (CTA) -->
     <section class="presave-section" aria-labelledby="presave-heading">
       <div class="presave-inner">
         <h2 id="presave-heading" class="presave-title">Presave YOKONO</h2>
@@ -138,7 +151,6 @@
 
         <a class="presave-button" href="https://unitedmasters.com/m/yokono?fbclid=PAVERFWAOepaRleHRuA2FlbQIxMABzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAaeSG_O4uHfhGGoqfuVBfpWI_cKKeSmi4ZQMMwa6idQbGhhstvtNh7S7-yNZVQ_aem_vHnWeh59uooNcdc-kd73eA"
            target="_blank" rel="noopener noreferrer" role="link" aria-label="Presave YOKONO en UnitedMasters">
-          <!-- small SVG icon + label -->
           <svg class="presave-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path fill="currentColor" d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/>
           </svg>
@@ -163,7 +175,13 @@
         const back  = img.dataset.back;
 
         function isFront(src){
-          return src.includes(decodeURIComponent(front)) || src.endsWith(front);
+          // robust check: compare encoded and decoded filenames and endings
+          try{
+            const decodedFront = decodeURIComponent(front);
+            return src.includes(decodedFront) || src.includes(front) || src.endsWith(front) || src.endsWith(decodedFront);
+          }catch(e){
+            return src.includes(front) || src.endsWith(front);
+          }
         }
         function showFront(){
           img.src = front;
