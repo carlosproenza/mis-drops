@@ -52,8 +52,20 @@
     <header class="drop-hero" role="img" aria-label="Portada de YOKONO"></header>
 
     <section class="drop-content" aria-labelledby="content-heading">
-      <div class="media" id="content-heading" aria-hidden="true">
-        <!-- Hueco en blanco (se deja vacío) -->
+      <!-- MEDIA: hueco blanco grande (aquí se muestra el reproductor, centrado y nivelado) -->
+      <div class="media" id="content-heading" aria-hidden="false">
+        <div class="media-inner">
+          <!-- Reproductor centrado dentro del hueco -->
+          <div class="audio-card" aria-label="Audio preview">
+            <audio id="preview-audio" controls preload="none" controlsList="nodownload">
+              <source src="preview%20audio.wav" type="audio/wav">
+              Tu navegador no soporta audio.
+            </audio>
+            <div class="audio-row">
+              <a class="audio-download" href="preview%20audio.wav" download>Descargar preview</a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="drop-text">
@@ -65,7 +77,7 @@
         <div class="section-block">
           <h3>Galería</h3>
 
-          <!-- GALLERY: aquí va el bloque interactivo (toggle front/back) -->
+          <!-- GALLERY: bloque interactivo (toggle front/back) -->
           <div class="gallery">
             <div class="gallery-cover" aria-label="Galería YOKONO">
               <img id="gallery-cover"
@@ -83,14 +95,13 @@
                 <span id="gallery-cover-desc" class="visually-hidden">Pulsa la imagen para ver la espalda</span>
               </div>
             </div>
-
-            <!-- Puedes añadir más thumbs aquí si lo deseas -->
+            <!-- más thumbs opcionales -->
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN: portada grande debajo del contenido (ESTÁTICA: NO toggle aquí) -->
+    <!-- SECCIÓN: portada grande debajo del contenido (ESTÁTICA) -->
     <section class="cover-section" aria-labelledby="cover-heading">
       <h2 id="cover-heading" class="visually-hidden">Portada y lanzamiento</h2>
 
@@ -165,6 +176,15 @@
       // preload back for snappier toggle
       const imgPreload = new Image();
       imgPreload.src = BACK;
+    })();
+
+    // Accessibility / placeholder: show duration in console when available
+    (function(){
+      const audio = document.getElementById('preview-audio');
+      if(!audio) return;
+      audio.addEventListener('loadedmetadata', ()=> {
+        console.log('Preview duration:', audio.duration);
+      });
     })();
   </script>
 </body>
