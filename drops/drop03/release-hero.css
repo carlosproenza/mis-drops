@@ -1,5 +1,6 @@
 /* release-hero.css
-   Hero + media + merch grid styles; audio card reducido para evitar invadir la portada.
+   Hero + media + merch grid styles.
+   Se eliminó la caja blanca interior: el audio se muestra de forma compacta (.audio-plain).
 */
 
 .drop-hero{
@@ -32,43 +33,31 @@
   z-index:0;
 }
 
-/* MEDIA (audio area) - reducido para no invadir la portada */
+/* MEDIA (audio area) */
 .media{
   background:#fff;
   border:1px solid var(--line,#eaeaea);
-  min-height:120px;            /* reducido */
+  min-height:120px;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:12px;                /* menos padding */
+  padding:12px;
   overflow:hidden;
   position:relative;
   z-index:2;
-  margin-top:-30px;            /* pequeña superposición, no invade */
+  margin-top:-30px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.04);
   border-top-left-radius:10px;
   border-top-right-radius:10px;
 }
 .media-inner{ width:100%; max-width:720px; display:flex; align-items:center; justify-content:center; padding:6px; }
 
-/* AUDIO CARD (pequeño) */
-.audio-card{
-  background:#ffffff;
-  padding:10px;                /* menos padding */
-  border-radius:8px;
-  box-shadow:0 8px 18px rgba(23,23,23,0.05);
-  border:1px solid var(--line,#eaeaea);
-  width:100%;
-  max-width:360px;             /* mucho más pequeño */
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-  align-items:stretch;
-}
-.audio-card audio{width:100%;outline:none}
-.audio-row{display:flex;justify-content:flex-end}
-.audio-download{font-size:.85rem;color:var(--text);text-decoration:none;border:1px solid var(--line);padding:.28rem .5rem;border-radius:6px;background:transparent}
-.audio-download:hover{background:#f7f7f7}
+/* AUDIO PLAIN: control nativo sin caja */
+.audio-plain{ display:flex; flex-direction:column; align-items:center; gap:8px; width:100%; max-width:420px; }
+.audio-plain audio{ width:100%; max-width:420px; outline:none; background:transparent; border-radius:4px; }
+.audio-download-row{ width:100%; display:flex; justify-content:flex-end; }
+.audio-download{ font-size:.85rem; color:var(--text); text-decoration:none; border:0; padding:.2rem .4rem; border-radius:6px; background:transparent; }
+.audio-download:hover{ background:#f2f2f2 }
 
 /* === MERCH GRID === */
 .gallery { margin-top:8px; }
@@ -110,7 +99,7 @@
 /* Responsive adjustments */
 @media (max-width:920px){
   .media{ margin-top:-20px; padding:10px; min-height:100px; border-top-left-radius:8px; border-top-right-radius:8px; }
-  .audio-card{ max-width:100%; padding:8px; }
+  .audio-plain{ max-width:100%; }
   .gallery-grid{ grid-template-columns: 1fr; }
   .cover-inner{ grid-template-columns:1fr; align-items:center; }
   .cover-info{text-align:left}
