@@ -1,6 +1,6 @@
 /* release-hero.css
-   Hero background (mobile / web) and gallery cover styles.
-   NOTE: front/back toggle runs ONLY on #gallery-cover (JS targets that element).
+   Hero background (mobile / web) and layout for drop03.
+   Media column contains centered audio card (hueco blanco).
 */
 
 .drop-hero{
@@ -16,6 +16,8 @@
   background-position: center;
   background-repeat: no-repeat;
   overflow:hidden;
+  padding-bottom:140px; /* espacio extra para que la caja pueda superponerse sin cortar */
+  z-index:0;
 }
 
 /* Desktop background */
@@ -23,6 +25,7 @@
   .drop-hero{
     min-height:420px;
     background-image: url("YOKONO PORTADA WEB.png");
+    padding-bottom:160px;
   }
 }
 
@@ -36,85 +39,71 @@
   z-index:0;
 }
 
-/* === Gallery cover (interactive card) === */
-.gallery {
-  margin-top:8px;
-}
-.gallery-cover{
-  background:transparent;
-  display:block;
-  max-width:520px;
-  border-radius:8px;
-  overflow:visible;
-}
-.gallery-cover img{
-  width:100%;
-  height:auto;
-  display:block;
-  border-radius:8px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+/* === MEDIA column (blanco) === */
+/* la media area actúa como lienzo blanco; la empujamos hacia arriba con margin-top negativo
+   para que la caja de audio quede dentro del hueco del hero (como en tu captura) */
+.media{
+  background:#fff;
   border:1px solid var(--line,#eaeaea);
-  transition: transform .18s ease, box-shadow .18s ease;
-}
-.gallery-cover img:hover{ transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,0.08); }
-
-/* small actions row under gallery image */
-.gallery-actions{
-  margin-top:8px;
+  min-height:300px;          /* height of the white area */
   display:flex;
-  gap:8px;
-  justify-content:flex-start;
+  align-items:center;        /* vertical centering of inner content */
+  justify-content:center;    /* horizontal centering */
+  padding:28px;
+  overflow:hidden;
+  position:relative;
+  z-index:2;                 /* por encima del hero */
+  margin-top:-120px;         /* tira la media hacia arriba para que quede en el hueco */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
 }
-.cover-download, .gallery-actions a{
-  display:inline-block;
-  padding:.4rem .7rem;
-  border-radius:6px;
-  border:1px solid var(--line);
-  background:transparent;
-  color:var(--text);
-  text-decoration:none;
+
+/* inner wrapper to limit width of the audio box inside the media area */
+.media-inner{width:100%;max-width:720px;display:flex;align-items:center;justify-content:center;padding:6px}
+
+/* === AUDIO CARD (el cuadro blanco con el player) === */
+.audio-card{
+  background:#ffffff;
+  padding:16px;
+  border-radius:10px;
+  box-shadow:0 12px 28px rgba(23,23,23,0.06);
+  border:1px solid var(--line,#eaeaea);
+  width:100%;
+  max-width:640px; /* ajusta para que no sea excesivamente ancho */
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  align-items:stretch;
 }
+.audio-card audio{width:100%;outline:none}
+.audio-row{display:flex;justify-content:flex-end}
+.audio-download{font-size:.9rem;color:var(--text);text-decoration:none;border:1px solid var(--line);padding:.38rem .6rem;border-radius:6px;background:transparent}
+.audio-download:hover{background:#f7f7f7}
+
+/* === Gallery cover (interactive card) === */
+.gallery { margin-top:8px; }
+.gallery-cover{ background:transparent; display:block; max-width:520px; border-radius:8px; overflow:visible; }
+.gallery-cover img{ width:100%; height:auto; display:block; border-radius:8px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); border:1px solid var(--line,#eaeaea); transition: transform .18s ease, box-shadow .18s ease; }
+.gallery-cover img:hover{ transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,0.08); }
+.gallery-actions{ margin-top:8px; display:flex; gap:8px; justify-content:flex-start; }
+.cover-download, .gallery-actions a{ display:inline-block; padding:.4rem .7rem; border-radius:6px; border:1px solid var(--line); background:transparent; color:var(--text); text-decoration:none; }
 .cover-download:hover, .gallery-actions a:hover{ background:#f7f7f7 }
 
 /* === cover-section (below hero) === */
-.cover-section{
-  margin:28px auto 40px;
-  max-width:980px;
-  padding:28px 20px;
-  border-top:1px solid var(--line,#eaeaea);
-  background:transparent;
-}
-.cover-inner{
-  display:grid;
-  grid-template-columns:360px 1fr;
-  gap:28px;
-  align-items:center;
-}
-.cover-img img{
-  width:100%;
-  height:auto;
-  display:block;
-  border-radius:8px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-  background:#fafafa;
-  border:1px solid var(--line,#eaeaea);
-}
-.cover-info{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  justify-content:center;
-}
-.cover-title{margin:0;font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem)}
-.cover-meta{color:var(--muted);font-weight:600}
-.cover-desc{color:var(--muted);margin-top:6px}
+.cover-section{ margin:8px auto 40px; max-width:980px; padding:28px 20px; border-top:1px solid var(--line,#eaeaea); background:transparent; }
+.cover-inner{ display:grid; grid-template-columns:360px 1fr; gap:28px; align-items:center; }
+.cover-img img{ width:100%; height:auto; display:block; border-radius:8px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); background:#fafafa; border:1px solid var(--line,#eaeaea); }
+.cover-info{ display:flex; flex-direction:column; gap:12px; justify-content:center; }
+.cover-title{ margin:0; font-weight:800; font-size:clamp(1.8rem,4vw,2.6rem) }
+.cover-meta{ color:var(--muted); font-weight:600 }
+.cover-desc{ color:var(--muted); margin-top:6px }
 
 /* Responsive adjustments */
 @media (max-width:920px){
+  .media{margin-top:-80px;padding:18px;min-height:220px}
+  .audio-card{max-width:100%}
   .cover-inner{grid-template-columns:1fr;align-items:center}
   .cover-info{text-align:left}
   .cover-img{order:0}
   .cover-title{font-size:1.6rem}
-  .drop-hero{min-height:300px}
-  .gallery-cover{max-width:100%}
+  .drop-hero{min-height:280px;padding-bottom:120px}
 }
