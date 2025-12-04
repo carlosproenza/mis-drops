@@ -1,6 +1,5 @@
 /* release-hero.css
-   Hero + media + merch grid styles.
-   Se eliminó la caja blanca interior: el audio se muestra de forma compacta (.audio-plain).
+   Versión final: sin botones de descarga, el audio es solo control nativo y la .media NO corta la portada.
 */
 
 .drop-hero{
@@ -16,48 +15,73 @@
   background-position: center;
   background-repeat: no-repeat;
   overflow:hidden;
-  padding-bottom:110px;
+  /* espacio suficiente para separación del siguiente bloque */
+  padding-bottom:48px;
   z-index:0;
 }
 
 @media (min-width: 900px){
-  .drop-hero{ min-height:420px; background-image: url("YOKONO PORTADA WEB.png"); padding-bottom:120px; }
+  .drop-hero{
+    min-height:420px;
+    background-image: url("YOKONO PORTADA WEB.png");
+    padding-bottom:56px;
+  }
 }
 
 .drop-hero::after{
   content:"";
   position:absolute;
   inset:0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.04) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.02) 100%);
   pointer-events:none;
   z-index:0;
 }
 
-/* MEDIA (audio area) */
+/* === MEDIA (audio area) === */
+/* Sin superposición: margin-top: 0; caja blanca NO invadirá la portada */
 .media{
   background:#fff;
   border:1px solid var(--line,#eaeaea);
-  min-height:120px;
+  min-height:80px;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:12px;
+  padding:12px 18px;
   overflow:hidden;
   position:relative;
   z-index:2;
-  margin-top:-30px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-  border-top-left-radius:10px;
-  border-top-right-radius:10px;
+  margin-top:0; /* no sube sobre el hero */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+  border-top-left-radius:8px;
+  border-top-right-radius:8px;
 }
-.media-inner{ width:100%; max-width:720px; display:flex; align-items:center; justify-content:center; padding:6px; }
 
-/* AUDIO PLAIN: control nativo sin caja */
-.audio-plain{ display:flex; flex-direction:column; align-items:center; gap:8px; width:100%; max-width:420px; }
-.audio-plain audio{ width:100%; max-width:420px; outline:none; background:transparent; border-radius:4px; }
-.audio-download-row{ width:100%; display:flex; justify-content:flex-end; }
-.audio-download{ font-size:.85rem; color:var(--text); text-decoration:none; border:0; padding:.2rem .4rem; border-radius:6px; background:transparent; }
-.audio-download:hover{ background:#f2f2f2 }
+/* inner wrapper to limit width of the audio control */
+.media-inner{
+  width:100%;
+  max-width:640px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:6px;
+}
+
+/* AUDIO PLAIN: control nativo sin caja ni descargas */
+.audio-plain{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  width:100%;
+  max-width:420px;
+}
+.audio-plain audio{
+  width:100%;
+  max-width:420px;
+  outline:none;
+  background:transparent;
+  border-radius:4px;
+}
 
 /* === MERCH GRID === */
 .gallery { margin-top:8px; }
@@ -82,28 +106,52 @@
   border:1px solid var(--line,#eaeaea);
   transition: transform .18s ease, box-shadow .18s ease;
 }
-.gallery-item img:hover{ transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,0.08); }
-.gallery-actions{ display:flex; gap:8px; justify-content:flex-start; }
-.gallery-download, .cover-download{ display:inline-block; padding:.4rem .7rem; border-radius:6px; border:1px solid var(--line); background:transparent; color:var(--text); text-decoration:none; }
-.gallery-download:hover, .cover-download:hover{ background:#f7f7f7 }
+.gallery-item img:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+}
 
 /* COVER SECTION (static) */
-.cover-section{ margin:8px auto 40px; max-width:980px; padding:28px 20px; border-top:1px solid var(--line,#eaeaea); background:transparent; }
-.cover-inner{ display:grid; grid-template-columns:360px 1fr; gap:28px; align-items:center; }
-.cover-img img{ width:100%; height:auto; display:block; border-radius:8px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); background:#fafafa; border:1px solid var(--line,#eaeaea); }
-.cover-info{ display:flex; flex-direction:column; gap:12px; justify-content:center; }
-.cover-title{ margin:0; font-weight:800; font-size:clamp(1.8rem,4vw,2.6rem) }
-.cover-meta{ color:var(--muted); font-weight:600 }
-.cover-desc{ color:var(--muted); margin-top:6px }
+.cover-section{
+  margin:24px auto 40px;
+  max-width:980px;
+  padding:28px 20px;
+  border-top:1px solid var(--line,#eaeaea);
+  background:transparent;
+}
+.cover-inner{
+  display:grid;
+  grid-template-columns:360px 1fr;
+  gap:28px;
+  align-items:center;
+}
+.cover-img img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  background:#fafafa;
+  border:1px solid var(--line,#eaeaea);
+}
+.cover-info{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  justify-content:center;
+}
+.cover-title{margin:0;font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem)}
+.cover-meta{color:var(--muted);font-weight:600}
+.cover-desc{color:var(--muted);margin-top:6px}
 
 /* Responsive adjustments */
 @media (max-width:920px){
-  .media{ margin-top:-20px; padding:10px; min-height:100px; border-top-left-radius:8px; border-top-right-radius:8px; }
+  .media{ padding:10px; min-height:70px; border-top-left-radius:8px; border-top-right-radius:8px; }
   .audio-plain{ max-width:100%; }
   .gallery-grid{ grid-template-columns: 1fr; }
   .cover-inner{ grid-template-columns:1fr; align-items:center; }
   .cover-info{text-align:left}
   .cover-img{ order:0 }
   .cover-title{ font-size:1.6rem }
-  .drop-hero{ min-height:280px; padding-bottom:120px }
+  .drop-hero{ min-height:280px; padding-bottom:80px }
 }
