@@ -52,7 +52,7 @@
     <header class="drop-hero" role="img" aria-label="Portada de YOKONO"></header>
 
     <section class="drop-content" aria-labelledby="content-heading">
-      <!-- MEDIA: hueco blanco grande (aquí está el reproductor, centrado y nivelado) -->
+      <!-- MEDIA: hueco blanco (player pequeño y centrado) -->
       <div class="media" id="content-heading" aria-hidden="false">
         <div class="media-inner">
           <div class="audio-card" aria-label="Audio preview">
@@ -79,7 +79,7 @@
           <!-- GALLERY GRID: items de merch (cada item tiene toggle front/back) -->
           <div class="gallery">
             <div class="gallery-grid">
-              <!-- Merch item 1 (existing): frente = FRENTE YOKONO 2 -->
+              <!-- Merch item 1 -->
               <div class="gallery-item">
                 <img class="gallery-toggle"
                      data-front="FRENTE%20YOKONO%202.png"
@@ -88,17 +88,14 @@
                      alt="FRENTE YOKONO — vista frontal"
                      width="800" height="800"
                      loading="lazy" decoding="async"
-                     tabindex="0"
-                     role="button"
-                     aria-pressed="false"
-                     aria-describedby="gallery-desc-1">
+                     tabindex="0" role="button" aria-pressed="false" aria-describedby="gallery-desc-1">
                 <div class="gallery-actions">
                   <a class="gallery-download" href="FRENTE%20YOKONO%202.png" download>Descargar</a>
                 </div>
                 <div id="gallery-desc-1" class="visually-hidden">Pulsa la imagen para ver la espalda</div>
               </div>
 
-              <!-- Merch item 2 (new): frente = FRENTE YOKONO 1 (1) -->
+              <!-- Merch item 2 (new) -->
               <div class="gallery-item">
                 <img class="gallery-toggle"
                      data-front="FRENTE%20YOKONO%201%20%281%29.png"
@@ -107,10 +104,7 @@
                      alt="FRENTE YOKONO 1 — vista frontal"
                      width="800" height="800"
                      loading="lazy" decoding="async"
-                     tabindex="0"
-                     role="button"
-                     aria-pressed="false"
-                     aria-describedby="gallery-desc-2">
+                     tabindex="0" role="button" aria-pressed="false" aria-describedby="gallery-desc-2">
                 <div class="gallery-actions">
                   <a class="gallery-download" href="FRENTE%20YOKONO%201%20%281%29.png" download>Descargar</a>
                 </div>
@@ -157,31 +151,30 @@
       const toggles = document.querySelectorAll('.gallery-toggle');
       if(!toggles.length) return;
 
-      toggles.forEach((img)=>{
+      toggles.forEach((img, idx)=>{
         const front = img.dataset.front;
         const back  = img.dataset.back;
         const parent = img.closest('.gallery-item');
         const dl = parent ? parent.querySelector('.gallery-download') : null;
 
         function isFront(src){
-          // compare filename endings to be robust con absolute/relative URLs
           return src.includes(decodeURIComponent(front)) || src.endsWith(front);
         }
         function showFront(){
           img.src = front;
-          img.alt = (front.includes('FRENTE') ? 'FRENTE' : '') + ' — vista frontal';
+          img.alt = 'Vista frontal';
           img.setAttribute('aria-pressed','false');
           if(dl){ dl.href = front; dl.setAttribute('download', decodeURIComponent(front).replace(/%20/g,' ')); }
         }
         function showBack(){
           img.src = back;
-          img.alt = (back.includes('ESPALDA') ? 'ESPALDA' : '') + ' — reverso';
+          img.alt = 'Vista espalda';
           img.setAttribute('aria-pressed','true');
           if(dl){ dl.href = back; dl.setAttribute('download', decodeURIComponent(back).replace(/%20/g,' ')); }
         }
 
-        // init showing front (use existing src if present)
-        if(!isFront(img.src)) showFront();
+        // init showing front
+        showFront();
 
         // click toggles
         img.addEventListener('click', ()=> {
@@ -197,13 +190,13 @@
           }
         });
 
-        // preload back image
+        // preload back
         const p = new Image();
         p.src = back;
       });
     })();
 
-    // audio accessibility helper (unchanged)
+    // audio helper
     (function(){
       const audio = document.getElementById('preview-audio');
       if(!audio) return;
