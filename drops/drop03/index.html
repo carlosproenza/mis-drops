@@ -96,9 +96,9 @@
 
       <div class="cover-inner">
         <div class="cover-img" aria-hidden="true">
-          <!-- Imagen estática: siempre FRENTE YOKONO 2 -->
-          <img src="FRENTE%20YOKONO%202.png"
-               alt="FRENTE YOKONO — portada"
+          <!-- Restaurada: YOKONO WERO copia.png -->
+          <img src="YOKONO%20WERO%20copia.png"
+               alt="Portada principal YOKONO"
                width="1200" height="1200"
                loading="lazy" decoding="async">
         </div>
@@ -109,7 +109,7 @@
 
           <p class="cover-desc">La portada principal (estática). Para interactuar con la espalda, usa la imagen en la galería arriba.</p>
 
-          <p><a class="cover-download" href="FRENTE%20YOKONO%202.png" download>Descargar portada</a></p>
+          <p><a class="cover-download" href="YOKONO%20WERO%20copia.png" download>Descargar portada</a></p>
         </div>
       </div>
     </section>
@@ -130,7 +130,6 @@
       const downloadLink = document.getElementById('gallery-download');
 
       function isFront(src){
-        // compare against filename (handles absolute src if needed)
         return src.includes(encodeURI('FRENTE YOKONO 2.png')) || src.endsWith(FRONT);
       }
       function showFront(){
