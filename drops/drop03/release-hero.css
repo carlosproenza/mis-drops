@@ -1,9 +1,6 @@
 /* release-hero.css
-   Ajustado para evitar que la caja blanca (.media) recorte la portada del hero.
-   Cambios clave:
-   - padding-bottom del hero reducido/ajustado para espacio visual
-   - margin-top de .media menos negativo para solapamiento más suave
-   - border-radius y overflow para que el borde superior del hueco quede "recortado" y limpio
+   Versión sin solapamiento: la .media queda debajo del hero (margin-top: 0).
+   Esto evita que la caja blanca corte la portada.
 */
 
 .drop-hero{
@@ -19,47 +16,45 @@
   background-position: center;
   background-repeat: no-repeat;
   overflow:hidden;
-  /* espacio suficiente para que la media no corte la portada */
-  padding-bottom:110px;
+  /* reducción del padding-bottom: no necesitamos espacio para superposición */
+  padding-bottom:40px;
   z-index:0;
 }
 
-/* Desktop background */
 @media (min-width: 900px){
   .drop-hero{
     min-height:420px;
     background-image: url("YOKONO PORTADA WEB.png");
-    padding-bottom:120px;
+    padding-bottom:48px;
   }
 }
 
-/* subtle overlay */
 .drop-hero::after{
   content:"";
   position:absolute;
   inset:0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.04) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.02) 100%);
   pointer-events:none;
   z-index:0;
 }
 
 /* === MEDIA column (blanco) === */
-/* la media area actúa como lienzo blanco; ahora se superpone menos para no cortar la portada */
+/* SIN SUPERPOSICIÓN: margin-top = 0 para que la caja no suba sobre el hero */
 .media{
   background:#fff;
   border:1px solid var(--line,#eaeaea);
-  min-height:300px;          /* altura del área blanca */
+  min-height:300px;
   display:flex;
-  align-items:center;        /* centrado vertical del contenido interno */
-  justify-content:center;    /* centrado horizontal */
+  align-items:center;
+  justify-content:center;
   padding:28px;
   overflow:hidden;
   position:relative;
-  z-index:2;                 /* por encima del hero */
-  margin-top:-60px;          /* reducido: menos solapamiento con el hero */
+  z-index:2;
+  margin-top:0; /* <-- ya no se superpone el hueco con el hero */
   box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-  border-top-left-radius:12px;  /* redondea borde superior para 'recorte' más limpio */
-  border-top-right-radius:12px;
+  border-top-left-radius:6px;
+  border-top-right-radius:6px;
 }
 
 /* inner wrapper to limit width of the audio box inside the media area */
@@ -72,7 +67,7 @@
   padding:6px;
 }
 
-/* === AUDIO CARD (el cuadro blanco con el player) === */
+/* === AUDIO CARD === */
 .audio-card{
   background:#ffffff;
   padding:16px;
@@ -91,7 +86,7 @@
 .audio-download{font-size:.9rem;color:var(--text);text-decoration:none;border:1px solid var(--line);padding:.38rem .6rem;border-radius:6px;background:transparent}
 .audio-download:hover{background:#f7f7f7}
 
-/* === Gallery cover (interactive card) === */
+/* === Gallery cover styles (sin cambios) === */
 .gallery { margin-top:8px; }
 .gallery-cover{ background:transparent; display:block; max-width:520px; border-radius:8px; overflow:visible; }
 .gallery-cover img{ width:100%; height:auto; display:block; border-radius:8px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); border:1px solid var(--line,#eaeaea); transition: transform .18s ease, box-shadow .18s ease; }
@@ -101,7 +96,7 @@
 .cover-download:hover, .gallery-actions a:hover{ background:#f7f7f7 }
 
 /* === cover-section (below hero) === */
-.cover-section{ margin:8px auto 40px; max-width:980px; padding:28px 20px; border-top:1px solid var(--line,#eaeaea); background:transparent; }
+.cover-section{ margin:28px auto 40px; max-width:980px; padding:28px 20px; border-top:1px solid var(--line,#eaeaea); background:transparent; }
 .cover-inner{ display:grid; grid-template-columns:360px 1fr; gap:28px; align-items:center; }
 .cover-img img{ width:100%; height:auto; display:block; border-radius:8px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); background:#fafafa; border:1px solid var(--line,#eaeaea); }
 .cover-info{ display:flex; flex-direction:column; gap:12px; justify-content:center; }
@@ -109,13 +104,13 @@
 .cover-meta{ color:var(--muted); font-weight:600 }
 .cover-desc{ color:var(--muted); margin-top:6px }
 
-/* Responsive adjustments: reducimos la superposición en móvil */
+/* Responsive adjustments */
 @media (max-width:920px){
-  .media{ margin-top:-40px; padding:18px; min-height:220px; border-top-left-radius:10px; border-top-right-radius:10px; }
+  .media{ padding:18px;min-height:220px; border-top-left-radius:8px; border-top-right-radius:8px; }
   .audio-card{max-width:100%}
   .cover-inner{grid-template-columns:1fr;align-items:center}
   .cover-info{text-align:left}
   .cover-img{order:0}
   .cover-title{font-size:1.6rem}
-  .drop-hero{min-height:280px;padding-bottom:100px}
+  .drop-hero{min-height:280px;padding-bottom:60px}
 }
