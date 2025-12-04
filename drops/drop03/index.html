@@ -18,7 +18,7 @@
   <meta property="og:description" content="Preview YOKONO — nuevo drop.">
   <meta property="og:url" content="https://carlosproenza.github.io/mis-drops/drops/drop03/">
   <meta property="og:site_name" content="DROPS">
-  <meta property="og:image" content="https://carlosproenza.github.io/mis-drops/drops/drop03/YOKONO%20PORTADA%20WEB.png">
+  <meta property="og:image" content="https://carlosproenza.github.io/mis-drops/drops/drop03/FRENTE%20YOKONO%202.png">
   <meta property="og:image:alt" content="Portada YOKONO">
   <meta property="og:image:type" content="image/png">
 
@@ -26,15 +26,14 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="YOKONO — DROP 03">
   <meta name="twitter:description" content="Preview YOKONO — nuevo drop.">
-  <meta name="twitter:image" content="https://carlosproenza.github.io/mis-drops/drops/drop03/YOKONO%20PORTADA%20WEB.png">
+  <meta name="twitter:image" content="https://carlosproenza.github.io/mis-drops/drops/drop03/FRENTE%20YOKONO%202.png">
 
-  <!-- Fuente / estilos globales -->
+  <!-- Fuentes / CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../style.css">
 
-  <!-- Archivo CSS específico del drop -->
+  <link rel="stylesheet" href="../../style.css">
   <link rel="stylesheet" href="release-hero.css">
 
   <style>
@@ -42,6 +41,7 @@
     .drop-content{display:grid;grid-template-columns:1fr 380px;gap:28px;margin-top:12px}
     @media (max-width:900px){.drop-content{grid-template-columns:1fr}}
     .gallery img{width:100%;height:auto;display:block;background:#fafafa}
+    .gallery-cover img{cursor:pointer}
   </style>
 </head>
 <body class="drop drop03">
@@ -52,20 +52,8 @@
     <header class="drop-hero" role="img" aria-label="Portada de YOKONO"></header>
 
     <section class="drop-content" aria-labelledby="content-heading">
-      <!-- MEDIA: hueco blanco grande (aquí se muestra el reproductor, centrado y nivelado) -->
-      <div class="media" id="content-heading" aria-hidden="false">
-        <div class="media-inner">
-          <!-- Reproductor centrado dentro del hueco -->
-          <div class="audio-preview" aria-label="Audio preview">
-            <audio id="preview-audio" controls preload="none" controlsList="nodownload">
-              <source src="preview%20audio.wav" type="audio/wav">
-              Tu navegador no soporta audio.
-            </audio>
-            <div class="audio-actions">
-              <a class="audio-download" href="preview%20audio.wav" download>Descargar preview</a>
-            </div>
-          </div>
-        </div>
+      <div class="media" id="content-heading" aria-hidden="true">
+        <!-- Hueco en blanco (se deja vacío) -->
       </div>
 
       <div class="drop-text">
@@ -76,27 +64,52 @@
 
         <div class="section-block">
           <h3>Galería</h3>
+
+          <!-- GALLERY: aquí va el bloque interactivo (toggle front/back) -->
           <div class="gallery">
-            <img src="YOKONO%20WERO%20copia.png" alt="Portada YOKONO" loading="lazy" decoding="async">
+            <div class="gallery-cover" aria-label="Galería YOKONO">
+              <img id="gallery-cover"
+                   src="FRENTE%20YOKONO%202.png"
+                   alt="FRENTE YOKONO — vista frontal"
+                   width="800" height="800"
+                   loading="lazy"
+                   decoding="async"
+                   tabindex="0"
+                   role="button"
+                   aria-pressed="false"
+                   aria-describedby="gallery-cover-desc">
+              <div class="gallery-actions">
+                <a id="gallery-download" class="cover-download" href="FRENTE%20YOKONO%202.png" download>Descargar</a>
+                <span id="gallery-cover-desc" class="visually-hidden">Pulsa la imagen para ver la espalda</span>
+              </div>
+            </div>
+
+            <!-- Puedes añadir más thumbs aquí si lo deseas -->
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN: portada grande debajo del contenido -->
+    <!-- SECCIÓN: portada grande debajo del contenido (ESTÁTICA: NO toggle aquí) -->
     <section class="cover-section" aria-labelledby="cover-heading">
       <h2 id="cover-heading" class="visually-hidden">Portada y lanzamiento</h2>
 
       <div class="cover-inner">
         <div class="cover-img" aria-hidden="true">
-          <img src="YOKONO%20WERO%20copia.png" alt="Portada YOKONO" width="1200" height="1200" loading="lazy" decoding="async">
+          <!-- Imagen estática: siempre FRENTE YOKONO 2 -->
+          <img src="FRENTE%20YOKONO%202.png"
+               alt="FRENTE YOKONO — portada"
+               width="1200" height="1200"
+               loading="lazy" decoding="async">
         </div>
 
         <div class="cover-info">
           <h1 class="cover-title">YOKONO</h1>
           <div class="cover-meta">Proximamente diciembre 30, 2025</div>
-          <p class="cover-desc">Descarga la portada o úsala como referencia para presskits y merch.</p>
-          <p><a class="cover-download" href="YOKONO%20WERO%20copia.png" download>Descargar portada</a></p>
+
+          <p class="cover-desc">La portada principal (estática). Para interactuar con la espalda, usa la imagen en la galería arriba.</p>
+
+          <p><a class="cover-download" href="FRENTE%20YOKONO%202.png" download>Descargar portada</a></p>
         </div>
       </div>
     </section>
@@ -106,14 +119,53 @@
     </footer>
   </main>
 
-  <!-- Pequeño script (placeholder) -->
   <script>
+    // Toggle ONLY in the gallery (front/back)
     (function(){
-      const audio = document.getElementById('preview-audio');
-      if(!audio) return;
-      audio.addEventListener('loadedmetadata', ()=> {
-        console.log('Preview duration:', audio.duration);
+      const galleryImg = document.getElementById('gallery-cover');
+      if(!galleryImg) return;
+
+      const FRONT = 'FRENTE%20YOKONO%202.png';
+      const BACK  = 'ESPALDA%20YOKONO.png';
+      const downloadLink = document.getElementById('gallery-download');
+
+      function isFront(src){
+        // compare against filename (handles absolute src if needed)
+        return src.includes(encodeURI('FRENTE YOKONO 2.png')) || src.endsWith(FRONT);
+      }
+      function showFront(){
+        galleryImg.src = FRONT;
+        galleryImg.alt = 'FRENTE YOKONO — vista frontal';
+        galleryImg.setAttribute('aria-pressed','false');
+        if(downloadLink) { downloadLink.href = FRONT; downloadLink.setAttribute('download','FRENTE YOKONO 2.png'); }
+      }
+      function showBack(){
+        galleryImg.src = BACK;
+        galleryImg.alt = 'ESPALDA YOKONO — reverso';
+        galleryImg.setAttribute('aria-pressed','true');
+        if(downloadLink) { downloadLink.href = BACK; downloadLink.setAttribute('download','ESPALDA YOKONO.png'); }
+      }
+
+      // start front
+      showFront();
+
+      // click toggles front/back
+      galleryImg.addEventListener('click', ()=> {
+        if(isFront(galleryImg.src)) showBack();
+        else showFront();
       });
+
+      // keyboard support
+      galleryImg.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          galleryImg.click();
+        }
+      });
+
+      // preload back for snappier toggle
+      const imgPreload = new Image();
+      imgPreload.src = BACK;
     })();
   </script>
 </body>
